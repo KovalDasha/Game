@@ -1,7 +1,7 @@
-//#ifndef GAME_H
-//#define GAME_H
+#ifndef GAME_H
+#define GAME_H
 
-//#endif // GAME_H
+
 
 #pragma once
 #include <SFML/Graphics.hpp>
@@ -9,7 +9,7 @@
 #include <memory>
 #include "GameObject.h"
 #include "Bird.h"
-#include "Pipe.h"
+//#include "Pipe.h"
 #include "ScoreManager.h"
 
 class Game {
@@ -35,3 +35,4 @@ private:
     sf::Text scoreText;
 };
 
+#endif // GAME_H

@@ -1,7 +1,7 @@
-//#ifndef PIPE_H
-//#define PIPE_H
+#ifndef PIPE_H
+#define PIPE_H
 
-//#endif // PIPE_H
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
@@ -20,3 +20,6 @@ private:
     sf::Texture texture;
     float speed;
 };
+
+
+#endif // PIPE_H

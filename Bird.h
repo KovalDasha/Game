@@ -1,7 +1,7 @@
-//#ifndef BIRD_H
-//#define BIRD_H
+#ifndef BIRD_H
+#define BIRD_H
 
-//#endif // BIRD_H
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
@@ -25,3 +25,5 @@ private:
     const float gravity;
     const float flapStrength;
 };
+
+#endif // BIRD_H

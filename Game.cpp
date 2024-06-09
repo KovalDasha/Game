@@ -69,11 +69,11 @@ void Game::render() {
 }
 
 void Game::loadResources() {
-    font.loadFromFile("arial.ttf");
+    font.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/arial.ttf");
 }
 
 void Game::saveGameState() {
-    std::ofstream saveFile("savegame.txt");
+    std::ofstream saveFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/savegame.txt");
     if (saveFile.is_open()) {
         saveFile << bird->getPosition().x << " " << bird->getPosition().y << " " << scoreManager.getScore() << "\n";
         saveFile.close();

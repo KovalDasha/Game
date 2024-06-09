@@ -1,7 +1,7 @@
-//#ifndef SCOREMANAGER_H
-//#define SCOREMANAGER_H
+#ifndef SCOREMANAGER_H
+#define SCOREMANAGER_H
 
-//#endif // SCOREMANAGER_H
+
 #pragma once
 //#include <string>
 
@@ -15,3 +15,6 @@ public:
 private:
     int score;
 };
+
+
+#endif // SCOREMANAGER_H

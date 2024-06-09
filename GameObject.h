@@ -1,7 +1,6 @@
-//#ifndef GAMEOBJECT_H
-//#define GAMEOBJECT_H
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 
-//#endif // GAMEOBJECT_H
 #pragma once
 #include <SFML/Graphics.hpp>
 
@@ -10,3 +9,5 @@ public:
     virtual void update(sf::Time deltaTime) = 0;
     virtual sf::FloatRect getBounds() const = 0;
 };
+
+#endif // GAMEOBJECT_H

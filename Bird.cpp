@@ -2,7 +2,7 @@
 
 Bird::Bird()
     : velocity(0), gravity(1000.f), flapStrength(-350.f) {
-    texture.loadFromFile("bird.png");
+    texture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/bird.png");
     sprite.setTexture(texture);
     sprite.setPosition(100, 300);
 }
