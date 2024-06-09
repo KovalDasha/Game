@@ -9,7 +9,7 @@
 #include <memory>
 #include "GameObject.h"
 #include "Bird.h"
-//#include "Pipe.h"
+#include "Pipe.h"
 #include "ScoreManager.h"
 
 class Game {
