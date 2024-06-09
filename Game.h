@@ -24,6 +24,7 @@ private:
     void loadResources();
     void saveGameState();
     void loadGameState();
+    void handleCollisions();
 
     sf::RenderWindow window;
     std::vector<std::unique_ptr<GameObject>> gameObjects;
@@ -33,6 +34,9 @@ private:
 
     sf::Font font;
     sf::Text scoreText;
+
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
 };
 
 #endif // GAME_H

@@ -16,7 +16,7 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I../../../GameFlappyBird -I. -IC:/SFML-2.5.1/include -IC:/Qt/6.7.0/mingw_64/mkspecs/win32-g++ 
+INCPATH       = -I../../../Game -I. -IC:/SFML-2.5.1/include -IC:/Qt/6.7.0/mingw_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,console -mthreads
 LIBS        =        -LC:\SFML-2.5.1\lib -lsfml-graphics -lsfml-window -lsfml-system   
@@ -272,8 +272,8 @@ debug/Game.o: ../../Game.cpp ../../Game.h \
 		C:/SFML-2.5.1/include/SFML/Graphics/VertexBuffer.hpp \
 		../../GameObject.h \
 		../../Bird.h \
-		../../Pipe.h \
-		../../ScoreManager.h
+		../../ScoreManager.h \
+		../../Pipe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Game.o ..\..\Game.cpp
 
 debug/Pipe.o: ../../Pipe.cpp ../../Pipe.h \
@@ -434,7 +434,6 @@ debug/main.o: ../../main.cpp C:/SFML-2.5.1/include/SFML/Graphics.hpp \
 		../../Game.h \
 		../../GameObject.h \
 		../../Bird.h \
-		../../Pipe.h \
 		../../ScoreManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 

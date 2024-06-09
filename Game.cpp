@@ -12,12 +12,16 @@ Game::Game()
     scoreText.setFont(font);
     scoreText.setCharacterSize(24);
     scoreText.setFillColor(sf::Color::White);
+
+    backgroundTexture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/background.jpg");
+    backgroundSprite.setTexture(backgroundTexture);
 }
 
 void Game::run() {
     while (window.isOpen()) {
         processEvents();
         update(clock.restart());
+        handleCollisions();
         render();
     }
 }
@@ -59,8 +63,18 @@ void Game::update(sf::Time deltaTime) {
     scoreText.setString("Score: " + std::to_string(scoreManager.getScore()));
 }
 
+void Game::handleCollisions() {
+    for (const auto& obj : gameObjects) {
+        Pipe* pipe = dynamic_cast<Pipe*>(obj.get());
+        if (pipe && bird->getBounds().intersects(pipe->getBounds())) {
+            window.close();
+        }
+    }
+}
+
 void Game::render() {
     window.clear();
+    window.draw(backgroundSprite);
     for (const auto& obj : gameObjects) {
         window.draw(*obj);
     }
@@ -81,7 +95,7 @@ void Game::saveGameState() {
 }
 
 void Game::loadGameState() {
-    std::ifstream loadFile("savegame.txt");
+    std::ifstream loadFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/savegame.txt");
     if (loadFile.is_open()) {
         float x, y;
         int score;
