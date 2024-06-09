@@ -2,13 +2,16 @@
 
 Bird::Bird()
     : velocity(0), gravity(1000.f), flapStrength(-350.f) {
-    texture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/bird.png");
-    sprite.setTexture(texture);
+    //texture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/bird.png");
+    //sprite.setTexture(texture);
     sprite.setPosition(100, 300);
 }
 
-void Bird::flap() {
-    velocity = flapStrength;
+void Bird::flap(bool direction) {
+    if(direction)
+        velocity = flapStrength;
+    else
+        velocity = -flapStrength;
 }
 
 void Bird::update(sf::Time deltaTime) {
@@ -27,6 +30,30 @@ sf::FloatRect Bird::getBounds() const {
 
 void Bird::setPosition(float x, float y) {
     sprite.setPosition(x, y);
+}
+
+void Bird::setTexture(const sf::Texture& texture)
+{
+    sprite.setTexture(texture);
+}
+
+void Bird::setGravity(int n)
+{
+    if(n == 0)
+    {
+        gravity = 1000.f;
+        flapStrength = -350.0f;
+    }
+    if(n == 1)
+    {
+        gravity = 50.f;
+        flapStrength = -100.0f;
+    }
+    if(n == 2)
+    {
+        gravity = 500.f;
+        flapStrength = -175.0f;
+    }
 }
 
 sf::Vector2f Bird::getPosition() const {

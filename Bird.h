@@ -9,10 +9,12 @@
 class Bird : public GameObject {
 public:
     Bird();
-    void flap();
+    void flap(bool direction);
     void update(sf::Time deltaTime) override;
     sf::FloatRect getBounds() const override;
     void setPosition(float x, float y);
+    void setTexture(const sf::Texture& texture);
+    void setGravity(int n);
     sf::Vector2f getPosition() const;
 
 protected:
@@ -22,8 +24,8 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
     float velocity;
-    const float gravity;
-    const float flapStrength;
+    float gravity;
+    float flapStrength;
 };
 
 #endif // BIRD_H
