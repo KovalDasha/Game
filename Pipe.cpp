@@ -2,7 +2,7 @@
 
 Pipe::Pipe(float startX, float startY)
     : speed(-200.f) {
-    texture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/pipe.png");
+    texture.loadFromFile("resource/pipe.png");
     sprite.setTexture(texture);
     sprite.setPosition(startX, startY);
 }

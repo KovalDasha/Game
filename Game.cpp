@@ -32,7 +32,7 @@ Game::Game()
     characterText.setString("Use LEFT/RIGHT to select character");
     characterText.setPosition(150, 500);
 
-    backgroundTexture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/background.jpg");
+    backgroundTexture.loadFromFile("resource/background.jpg");
     backgroundSprite.setTexture(backgroundTexture);
 }
 
@@ -156,12 +156,12 @@ void Game::render() {
 }
 
 void Game::loadResources() {
-    font.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/arial.ttf");
+    font.loadFromFile("resource/arial.ttf");
 
     sf::Texture birdTexture1, birdTexture2, birdTexture3;
-    birdTexture1.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/bird.png");
-    birdTexture2.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/samolet.png");
-    birdTexture3.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/airballon.png");
+    birdTexture1.loadFromFile("resource/bird.png");
+    birdTexture2.loadFromFile("resource/samolet.png");
+    birdTexture3.loadFromFile("resource/airballon.png");
 
     birdTextures.push_back(birdTexture1);
     birdTextures.push_back(birdTexture2);
@@ -169,7 +169,7 @@ void Game::loadResources() {
 }
 
 void Game::saveGameState() {
-    std::ofstream saveFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/savegame.txt");
+    std::ofstream saveFile("resource/savegame.txt");
     if (saveFile.is_open()) {
         saveFile << bird->getPosition().x << " " << bird->getPosition().y << " " << scoreManager.getScore() << "\n";
         saveFile.close();
@@ -177,7 +177,7 @@ void Game::saveGameState() {
 }
 
 void Game::loadGameState() {
-    std::ifstream loadFile("savegame.txt");
+    std::ifstream loadFile("resource/savegame.txt");
     if (loadFile.is_open()) {
         float x, y;
         int score;
