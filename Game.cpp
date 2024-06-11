@@ -5,11 +5,13 @@
 Game::Game()
     : window(sf::VideoMode(800, 600), "Flappy Bird"), gameState(GameState::Menu), currentBirdIndex(1) {
     loadResources();
+    // Utwórz ptaka i ustaw teksturę
     gameObjects.push_back(std::make_unique<Bird>());
     bird = dynamic_cast<Bird*>(gameObjects.back().get());
     bird->setTexture(birdTextures[currentBirdIndex]);
     bird->setGravity(currentBirdIndex);
     gameObjects.push_back(std::make_unique<Pipe>(800, rand() % 300 + 100));
+    // Ustawianie tekstów
     scoreText.setFont(font);
     scoreText.setCharacterSize(24);
     scoreText.setFillColor(sf::Color::White);
@@ -31,11 +33,11 @@ Game::Game()
     characterText.setFillColor(sf::Color::White);
     characterText.setString("Use LEFT/RIGHT to select character");
     characterText.setPosition(150, 500);
-
+    // Wczytywanie tła
     backgroundTexture.loadFromFile("resource/background.jpg");
     backgroundSprite.setTexture(backgroundTexture);
 }
-
+// Główny cykl gry
 void Game::run() {
     while (window.isOpen()) {
         processEvents();
@@ -48,7 +50,7 @@ void Game::run() {
         render();
     }
 }
-
+// Obsługa wydarzeń
 void Game::processEvents() {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -88,6 +90,7 @@ void Game::processEvents() {
                 }
             }
         }
+        // Sprawdź, czy klawisz jest w stanie odtwarzania.
         if (gameState == GameState::Playing) {
             if(currentBirdIndex == 1)
             {
@@ -101,7 +104,7 @@ void Game::processEvents() {
         }
     }
 }
-
+// Aktualizacja stanu gry
 void Game::update(sf::Time deltaTime) {
     for (auto& obj : gameObjects) {
         obj->update(deltaTime);
@@ -124,7 +127,7 @@ void Game::update(sf::Time deltaTime) {
 
     scoreText.setString("Score: " + std::to_string(scoreManager.getScore()));
 }
-
+// Obsługa kolizji
 void Game::handleCollisions() {
     for (const auto& obj : gameObjects) {
         Pipe* pipe = dynamic_cast<Pipe*>(obj.get());
@@ -133,7 +136,7 @@ void Game::handleCollisions() {
         }
     }
 }
-
+// Rysowanie wszystkich obiektów
 void Game::render() {
     window.clear();
     window.draw(backgroundSprite);
@@ -146,7 +149,7 @@ void Game::render() {
     } else if (gameState == GameState::Menu) {
         window.draw(menuText);
         window.draw(characterText);
-        window.draw(*bird);  // Draw the current selected bird
+        window.draw(*bird);  // Rysunek aktualnie wybranego ptaka
     } else if (gameState == GameState::GameOver) {
         window.draw(gameOverText);
         window.draw(scoreText);
@@ -154,7 +157,7 @@ void Game::render() {
 
     window.display();
 }
-
+// Ładowanie zasobów (tekstury ptaków, czcionki)
 void Game::loadResources() {
     font.loadFromFile("resource/arial.ttf");
 
@@ -167,7 +170,7 @@ void Game::loadResources() {
     birdTextures.push_back(birdTexture2);
     birdTextures.push_back(birdTexture3);
 }
-
+// Zapisywanie stanu gry do pliku
 void Game::saveGameState() {
     std::ofstream saveFile("resource/savegame.txt");
     if (saveFile.is_open()) {
@@ -187,7 +190,7 @@ void Game::loadGameState() {
         loadFile.close();
     }
 }
-
+// Reset gry (powrót do menu)
 void Game::resetGame() {
     gameObjects.clear();
     gameObjects.push_back(std::make_unique<Bird>());
@@ -198,13 +201,13 @@ void Game::resetGame() {
     scoreManager.setScore(0);
     scoreText.setString("Score: 0");
 }
-
+// Wybierz następny znak (ptak)
 void Game::selectNextCharacter() {
     currentBirdIndex = (currentBirdIndex + 1) % birdTextures.size();
     bird->setTexture(birdTextures[currentBirdIndex]);
     bird->setGravity(currentBirdIndex);
 }
-
+// Wybór poprzedniego znaku (ptak)
 void Game::selectPreviousCharacter() {
     currentBirdIndex = (currentBirdIndex - 1 + birdTextures.size()) % birdTextures.size();
     bird->setTexture(birdTextures[currentBirdIndex]);

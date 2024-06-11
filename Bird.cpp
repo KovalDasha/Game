@@ -1,5 +1,5 @@
 #include "Bird.h"
-
+// Konstruktor klasy Bird
 Bird::Bird()
     : velocity(0), gravity(1000.f), flapStrength(-350.f) {
     //texture.loadFromFile("C:/Users/koval/OneDrive/Dokumenty/Git/Game/bird.png");
@@ -13,7 +13,7 @@ void Bird::flap(bool direction) {
     else
         velocity = -flapStrength;
 }
-
+// Aktualizacja statusu ptaka
 void Bird::update(sf::Time deltaTime) {
     velocity += gravity * deltaTime.asSeconds();
     sprite.move(0, velocity * deltaTime.asSeconds());
@@ -36,7 +36,7 @@ void Bird::setTexture(const sf::Texture& texture)
 {
     sprite.setTexture(texture);
 }
-
+//Ustawienie grawitacji dla drobiu
 void Bird::setGravity(int n)
 {
     if(n == 0)
